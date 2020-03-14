@@ -1,0 +1,94 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+ 
+  
+  #tree-wrapper {
+    position: relative;
+  }
+
+  .root-person {
+    background-color: papayawhip;
+  }
+  
+  .tree-branch {
+    position: relative;
+    margin-right: 250px;
+  }
+  .tree-branch:before {
+    content: "";
+    width: 50px;
+    border-top: 2px solid #333;
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    margin-top: 1px;
+  }
+  
+  .tree-entry {
+    position: relative;
+    min-height: 60px;
+  }
+  .tree-entry:before {
+    content: "";
+    height: 100%;
+    border-right: 2px solid #333;
+    position: absolute;
+    right: -50px;
+  }
+  .tree-entry:after {
+    content: "";
+    width: 50px;
+    border-top: 2px solid #333;
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    margin-top: 1px;
+  }
+  .tree-entry:first-child:before {
+    width: 10px;
+    height: 50%;
+    top: 50%;
+    margin-top: 2px;
+    border-radius: 0 10px 0 0;
+  }
+  .tree-entry:first-child:after {
+    height: 10px;
+    border-radius: 0 10px 0 0;
+  }
+  .tree-entry:last-child:before {
+    width: 10px;
+    height: 50%;
+    border-radius: 0 0 10px 0;
+  }
+  .tree-entry:last-child:after {
+    height: 10px;
+    border-top: none;
+    border-bottom: 2px solid #333;
+    border-radius: 0 0 10px 0;
+    margin-top: -9px;
+  }
+  .tree-entry.sole:before {
+    display: none;
+  }
+  .tree-entry.sole:after {
+    width: 50px;
+    height: 0;
+    margin-top: 1px;
+    border-radius: 0;
+  }
+  
+  .tree-label {
+    display: block;
+    min-width: 150px;
+    padding: 5px 10px;
+    line-height: 20px;
+    text-align: center;
+    border: 2px solid #333;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -15px;
+  }

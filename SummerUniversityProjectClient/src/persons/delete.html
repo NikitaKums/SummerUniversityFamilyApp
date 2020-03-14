@@ -1,0 +1,32 @@
+<template>
+    <h1>Kustuta inimene</h1>
+    <h3>Kas olete kindel?</h3>
+    <div>
+      <hr />
+      <dl class="row">
+        <dt class = "col-sm-2">
+          Eesnimi
+        </dt>
+        <dd class = "col-sm-10">
+          ${person.firstName}
+        </dd>
+        <dt class = "col-sm-2">
+          Perekonnanimi
+        </dt>
+        <dd class = "col-sm-10">
+          ${person.lastName}
+        </dd>
+        <dt class = "col-sm-2">
+            Vanus
+        </dt>
+        <dd class = "col-sm-10">
+            ${person.age}
+        </dd>
+      </dl>
+      <form submit.delegate="submit()">
+        <input type="submit" value="Kustuta" class="btn btn-danger" /> |
+        <a route-href="route: personsIndex">Tagasi nimekirja</a>
+      </form>
+    </div>
+  
+  </template>

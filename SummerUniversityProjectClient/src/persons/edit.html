@@ -1,0 +1,29 @@
+<template>
+    <h1>Muuda inimese andmed</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <form method="post" submit.delegate="submit()">
+        <div class="form-group">
+            <label class="control-label" for="PersonTitle">Eesnimi <small>(1 kuni 128 tähemärki)</small></label>
+            <input class="form-control" type="text" id="PersonFirstname" name="PersonFirstname" value.bind="person.firstName" />
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="PersonLastname">Perekonnanimi <small>(1 kuni 128 tähemärki)</small></label>
+            <input class="form-control" type="text" id="PersonLastname" name="PersonLastname" value.bind="person.lastName" />
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="PersonAge">Vanus <small>(0(alla 1 aasta) kuni 122)</small></label>
+            <input class="form-control" type="number" id="PersonAge" name="PersonAge" value.bind="person.age" />
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Muuda" class="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <div>
+      <a route-href="route: personsIndex">Tagasi nimekirja</a>
+    </div>
+  </template>

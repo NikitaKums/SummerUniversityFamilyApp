@@ -1,0 +1,26 @@
+<template>
+    <div class="float-right">
+      <form>
+        <div class="dataTables_paginate paging_simple_numbers">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous" style="margin-right: 1px">
+              <a class="btn btn-primary pagination-button-margin" click.delegate="previousButtonClicked()" if.bind="pageIndex > 1">
+                Previous
+              </a>
+              <a class="btn btn-primary pagination-button-margin disabled" click.delegate="previousButtonClicked()" if.bind="pageIndex == 1">
+                Previous
+              </a>
+            </li>
+            <li class="paginate_button page-item next" style="margin-left: 1px">
+              <a class="btn btn-primary pagination-button-margin" click.delegate="nextButtonClicked()" if.bind="totalPages > pageIndex">
+                Next
+              </a>
+              <a else class="btn btn-primary pagination-button-margin disabled" click.delegate="nextButtonClicked()">
+                Next
+              </a>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+</template>

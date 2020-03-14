@@ -1,0 +1,86 @@
+<template>
+  <div class="table-background-image">
+    <h1>Nimekiri</h1>
+    <p>
+      <a class="btn btn-success"  route-href="route: personsCreate">Lisa inimene</a>
+    </p>
+    <form>
+      <div class="row">
+        <div class="col-md-3">
+          <input value.bind="search" class="form-control"/>
+        </div>
+        <div class="col-md-4">
+          <input type="button" value="Otsi"  class="btn btn-primary" click.delegate="searchClicked()" />
+          <a class="btn btn-danger" href="#" click.delegate="searchResetClicked()">Värskenda</a>
+        </div>
+      </div>
+    </form>
+    <table class="table table-responsible table-hover table-background ">
+      <thead>
+      <tr>
+        <th>
+          Eesnimi
+        </th>
+        <th>
+          Perekonnanimi
+        </th>
+        <th>
+          Vanus
+        </th>
+        <th>
+          Seotud inimeste arv
+        </th>
+        <th>
+          Lisa inimene sugukonda
+        </th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr repeat.for="person of persons" class="table-row">
+        <td>
+          ${person.firstName}
+        </td>
+        <td>
+          ${person.lastName}
+        </td>
+        <td>
+          ${person.age}
+        </td>
+        <td>
+         <a route-href="route: personsDetails; params.bind: {id: person.id}">${person.relationCount}</a>
+        </td>
+        <td>
+          <form method="post" submit.delegate="addPersonToRelationship(person.id)">
+          <select class="form-control" value.bind="selectPersonId">
+            <option selected value="null">
+              On Kellele
+            </option>
+            <option repeat.for="personName of personNames" model.bind="personName.id" >
+              ${personName.firstName + ' ' + personName.lastName}
+            </option>
+          </select>
+          <select class="form-control" value.bind="selectRelationshipId">
+            <option selected="selected" value="null">
+              Kes
+            </option>
+            <option repeat.for="relationship of relationShips" model.bind="relationship.id">
+              ${relationship.relation}
+            </option>
+          </select>
+          <button type="submit" class="btn bg-warning float-right">Lisa</button>
+        </form>
+        </td>
+        <td>
+          <div class="tableButtons">
+            <a route-href="route: personsEdit; params.bind: {id: person.id}"  class="btn btn-warning">Muuda</a>
+            <a route-href="route: personsDetails; params.bind: {id: person.id}"  class="btn btn-success">Lähivaade</a>
+            <a route-href="route: personsDelete; params.bind: {id: person.id}"  class="btn btn-danger">Kustuta</a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <compose view="../pagination_partial.html"></compose>
+  </div>
+  </template>

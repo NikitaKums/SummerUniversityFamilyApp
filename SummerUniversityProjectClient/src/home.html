@@ -1,0 +1,64 @@
+<template>
+    <div class="text-center background-image-div" class="blur">
+      <h1 class="display-4"> Teretulemast Sugukonna Äppi!</h1>
+      <h3>Saate minna nimekirja juurde üleval oleva navigatsiooni kaudu.</h3>
+      <hr>
+      <div class="blur">
+        <h4 class="black-h4-color">Praegused andmed:</br></h4>
+          <h5>Kõige noorem tädi:</h5>
+          <a if.bind="youngestAunt.id != null" class="home-link" route-href="route: personsDetails; params.bind: {id: youngestAunt.id}">
+            ${youngestAunt.firstName + ' ' + youngestAunt.lastName}</a>
+            <span if.bind="youngestAunt.id == null">-----</span>
+          <hr>
+          <h5>Kõige noorem onu:</h5>
+          <a if.bind="youngestUncle.id != null" class="home-link" route-href="route: personsDetails; params.bind: {id: youngestUncle.id}">
+            ${youngestUncle.firstName + ' ' + youngestUncle.lastName}</a>
+            <span if.bind="youngestUncle.id == null">-----</span>
+          <hr>
+          <div class="form-row">
+            <div class="col-md-6 content-right">
+              <label><h5>Mitmes laps peres on</h5></label>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control" value.bind="whichChildId" change.delegate="getNthChildInFamily()">
+                <option selected="selected" value="null">Valige inimene</option>
+                <option repeat.for="child of childrenDropdown" model.bind="child.id">
+                    ${child.firstName}
+                </option>
+              </select>
+            </div>
+          </div>
+          <h5 if.bind="whichChildInFamily.nthChildInFamily != undefined">
+            <a class="home-link" route-href="route: personsDetails; params.bind: {id: whichChildInFamily.id}">${whichChildInFamily.firstName + ' ' + whichChildInFamily.lastName} on </a>
+            ${whichChildInFamily.nthChildInFamily} laps peres.
+          </h5>
+          <hr>
+          <h5>Kellel on kõige rohkem eelkäijaid? Kes on tema eelkäijad?</h5>
+          <form method="post" submit.delegate="showPredecessors()">
+            <button type="submit" class="btn btn-primary">Vajutage siia, et näha</button>
+          </form>
+          <div if.bind="showPredecessorsBoolean">
+            <div if.bind="werePredecessorsLoaded">
+              <div if.bind="predecessorData.personData.id === undefined">
+                <h3>Ei leitud sellist inimest</h3>
+              </div>
+              <div else>
+                <h3>Inimene, kellel on kõige rohkem eelkäijaid: 
+                  <a route-href="route: personsDetails; params.bind: {id: predecessorData.personData.id}">
+                    ${predecessorData.personData.firstName + ' ' + predecessorData.personData.lastName}</a>
+                </h3>
+                <hr>
+                <h3>Tema eelkäijad on (${predecessorData.predecessorsCount}):</h3>
+                <h5 repeat.for="predecessor of predecessorData.predecessors">
+                  <a route-href="route: personsDetails; params.bind: {id: predecessor.id}">
+                    ${predecessor.firstName + ' ' + predecessor.lastName}
+                  </a>
+                </h5>
+              </div>
+            </div>
+            <div if.bind="werePredecessorsLoaded === false" class="lds-facebook"><div></div><div></div><div></div></div>
+          </div>
+          <hr>
+      </div>
+    </div>
+  </template>

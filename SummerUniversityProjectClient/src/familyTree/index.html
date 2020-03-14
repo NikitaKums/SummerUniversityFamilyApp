@@ -1,0 +1,28 @@
+<template>
+    <h1>SuguPuu</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <form method="post" submit.delegate="loadFamilyTree()">
+            <select class="form-control" value.bind="selectPersonId">
+                <option selected="selected" value="null">
+                  ----
+                </option>
+                <option repeat.for="personName of personNames" model.bind="personName.id">
+                  ${personName.firstName + ' ' + personName.lastName}
+                </option>
+              </select>
+              <button type="submit" class="btn bg-warning float-right">Lae sugupuu</button>
+        </form>
+      </div>
+    </div>
+    <!-- Tree start -->
+    <div id="treeWrapper">
+    </div>
+     <!-- Tree end -->
+    <div if.bind="shouldShowFamilyTree === false" class="lds-facebook"><div></div><div></div><div></div></div>
+    <div>
+      <a route-href="route: home">Tagasi esilehele</a>
+    </div>
+    
+  </template>

@@ -1,0 +1,67 @@
+<template>
+    <h1> ${firstAndLastName} <small>(${personInRelationships.personData.age} aastat vana)</small> lähivaade</h1>
+    <hr />
+    <div class="col-md-8">
+      <div>
+        <div class="card-body table-responsive p-0">
+          <table class="table table-borderless">
+              <table class="table table-borderless">
+                <thead>
+                    Inimesed, kes on seotud:
+                </thead>
+                <tbody if.bind="personInRelationships.personRelatedTo.length > 0">
+                <tr repeat.for="personInRelationship of personInRelationships.personRelatedTo">
+                    <td class="relted-to-indicator">
+                        <b>${personInRelationship.personData.firstName} ${personInRelationship.personData.lastName}</b>
+                        on ${firstAndLastName} <b>${personInRelationship.relation}</b>
+                    </td>
+                    <td class="table-buttons">
+                        <a class="btn bg-warning float-right" 
+                            route-href="route: personInRelationshipEdit; params.bind: {id: personInRelationship.personInRelationshipId}">
+                            Muuda
+                        </a>
+                        <form method="post" submit.delegate="deleteRelationship(personInRelationship.personInRelationshipId)">
+                            <button type="submit" class="btn btn-danger float-right">Kustuta</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody else>
+                    <tr>
+                        <td>----</td>
+                    </tr>
+                </tbody>
+              </table>
+            <table class="table table-borderless">
+                <thead>
+                    Inimesed, kellega on seotud
+                </thead>
+                <tbody if.bind="personInRelationships.personRelatedFrom.length > 0">
+                <tr repeat.for="personInRelationship of personInRelationships.personRelatedFrom">
+                    <td class="related-from-indicator">
+                        <b>${firstAndLastName}</b> on
+                        ${personInRelationship.personData.firstName} ${personInRelationship.personData.lastName}
+                        <b>${personInRelationship.relation}</b>
+                    </td>
+                    <td class="table-buttons">
+                        <a class="btn bg-warning float-right" 
+                            route-href="route: personInRelationshipEdit; params.bind: {id: personInRelationship.personInRelationshipId}">
+                            Muuda
+                        </a>
+                        <form method="post" submit.delegate="deleteRelationship(personInRelationship.personInRelationshipId)">
+                            <button type="submit" class="btn btn-danger float-right">Kustuta</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody else>
+                    <tr>
+                        <td>----</td>
+                    </tr>
+                </tbody>
+            </table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>

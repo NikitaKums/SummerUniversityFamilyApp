@@ -1,0 +1,37 @@
+<template>
+    <!-- include/require file or module -->
+    <require from="bootstrap/dist/css/bootstrap.min.css"></require>
+    <require from="./css/custom.css"></require>
+    <require from="./css/familyTreeStyles.css"></require>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+          <a class="navbar-brand" route-href="route: home;">Sugukonna Äpp</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+              <li class="nav-item" repeat.for="nav of router.navigation">
+                <a class="nav-link text-dark" href.bind="nav.href">${nav.title}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <main role="main" class="pb-3">
+        <!-- content will be rendered here-->
+        <router-view></router-view>
+      </main>
+    </div>
+  
+    <footer class="border-bottom footer text-muted bottom-fixed">
+      <div class="container">
+        &copy; 2020 - Sugukonna Äpp
+      </div>
+    </footer>
+  </template>
