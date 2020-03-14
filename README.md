@@ -1,4 +1,5 @@
 ## Family application in which you can create your family's relations and see how many relations there are for a certain person and see their family tree.
+#### Theres some dummy data for testing application functionality, feel free to delete it all and enter your data.
 
 ## Running the application (cmd)
 ### First things first - clone to project.
