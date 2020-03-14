@@ -24,3 +24,6 @@
 - Isa/Ema ei saa olla noorem kui nende laps *(Parent can't be older than their child)*
 - Vanaisa/Vanaema ei saa olla noorem kui nende lapselaps *(Grandparents can't be younger than their grandchildren)*
 - Vanaema/Vanaisa lisamisel lisatakse lapselaps antud inimesele *(By adding grandparent to a person, the grandparent gets a grandchild added too)*
+
+### Domain
+![Image of domain schema](https://i.imgur.com/jbL8VHE.jpg)
